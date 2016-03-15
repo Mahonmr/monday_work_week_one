@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%="Sightings for the #{@species.name}" %></h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Date sighting</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sightings.each do |sighting| %>
+      <tr scope="row">
+        <td><%= sighting.latitude %></td>
+        <td><%= sighting.longitude %></td>
+        <td><%= sighting.date_sighting %></td>
+        <td><%= link_to 'Edit', edit_species_sighting_path(@species, sighting) %></td>
+        <td><%= link_to 'Destroy', species_sighting_path(@species, sighting), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+<br>
+<%= link_to 'New Sighting', new_species_sighting_path(@species) %>

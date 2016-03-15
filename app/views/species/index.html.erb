@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Species</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Species</th>
+      <th>Endangered</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @species.each do |species| %>
+      <tr scope="row">
+        <td><%= species.name %></td>
+        <td><%= species.endangered_species %></td>
+        <td><%= link_to 'Edit', edit_species_path(species) %></td>
+        <td><%= link_to 'Destroy', species, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Sightings', species_sightings_path(species) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+<br>
+
+<%= link_to 'New Species', new_species_path %>

@@ -1,0 +1,21 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password: root
+  socket: /tmp/mysql.sock
+
+development:
+  <<: *default
+  database: wildlife_development
+
+test:
+  <<: *default
+  database: wildlife_test
+
+production:
+  <<: *default
+  database: wildlife_production
+  username: wildlife
+  password: <%= ENV['WILDLIFE_DATABASE_PASSWORD'] %>
